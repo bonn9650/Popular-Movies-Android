@@ -9,16 +9,18 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 
-import java.util.ArrayList;
+import com.example.android.popularmovies.TheMovieDBAPI.Films;
+
+import java.util.List;
 
 
 public class FilmRecyclerViewAdapter extends RecyclerView
         .Adapter<FilmRecyclerViewAdapter.FilmViewHolder> {
 
-    private ArrayList<Films> mFilms;
+    private List<Films> mFilms;
     private Context mContext;
 
-    public FilmRecyclerViewAdapter(ArrayList<Films> films, Context context) {
+    public FilmRecyclerViewAdapter(List<Films> films, Context context) {
         this.mFilms = films;
         this.mContext = context;
     }
@@ -53,8 +55,8 @@ public class FilmRecyclerViewAdapter extends RecyclerView
     public void onBindViewHolder(@NonNull FilmViewHolder holder, int position) {
 
         //set the text and images of the film poster by viewholder position
-        holder.filmName.setText(mFilms.get(position).getmFilmTitle());
-        holder.filmRating.setText(String.valueOf(mFilms.get(position).getmFilmRating()));
+        holder.filmName.setText(mFilms.get(position).getFilmTitle());
+        holder.filmRating.setText(String.valueOf(mFilms.get(position).getVoteAverage()));
 
     }
 
