@@ -6,51 +6,58 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:layout_margin="16dp">
+        android:layout_width="match_parent"
+        android:layout_margin="8dp">
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/film_image"
-                android:scaleType="fitCenter"
-                android:layout_width="180dp"
-                android:layout_height="220dp"
+                android:layout_width="wrap_content"
+                android:layout_height="240dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="8dp"
                 android:contentDescription="Film Poster Image"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:background="@color/colorPrimary"
-                tools:background="@color/colorPrimary"/>
+                tools:background="@color/colorPrimary"
+                tools:layout_height="220dp"
+                tools:layout_width="180dp" />
 
             <TextView
                 android:id="@+id/film_title"
-                android:layout_width="180dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginStart="8dp"
-                android:textColor="@android:color/white"
-                android:textStyle="bold"
                 android:gravity="center_horizontal"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="@+id/film_image"
                 app:layout_constraintStart_toStartOf="@+id/film_image"
                 app:layout_constraintTop_toBottomOf="@+id/film_image"
-                tools:text="Movie Title"
-                android:text="@{film.mFilmTitle}"/>
+                tools:text="Movie Title" />
 
             <TextView
                 android:id="@+id/film_rating_star"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:background="@android:drawable/star_big_off"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@android:drawable/star_big_on"
                 android:gravity="center"
-                android:text="@{film.mFilmRating}"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/film_image"
+                android:textColor="#000000"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/film_image"
+                app:layout_constraintTop_toTopOf="parent"
                 tools:text="5" />
 
 

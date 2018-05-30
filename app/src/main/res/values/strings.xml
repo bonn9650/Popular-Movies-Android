@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">Popular Movies</string>
+    <string name="MOST_POPULAR">popular</string>
+    <string name="HIGHEST_RATED">top_rated</string>
+
+    <!--Sort array Key and Title-->
+    <string name="sort_key">sort_by</string>
+    <string name="sort_tile">Sort Films By</string>
+
+    <!--Sort menu title-->
+    <string name="sort_menu_title">Sort</string>
+    <string name="title_activity_settings">Settings</string>
+
 </resources>

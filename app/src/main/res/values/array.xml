@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="SortType">
+        <item>Most Popular</item>
+        <item>Highest Rated</item>
+    </string-array>
+
+    <string-array name="SortValues">
+        <item>@string/MOST_POPULAR</item>
+        <item>@string/HIGHEST_RATED</item>
+    </string-array>
+
+</resources>

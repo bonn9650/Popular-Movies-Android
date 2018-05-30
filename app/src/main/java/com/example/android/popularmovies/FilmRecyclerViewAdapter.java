@@ -6,10 +6,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 
 import com.example.android.popularmovies.TheMovieDBAPI.Films;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -19,6 +21,7 @@ public class FilmRecyclerViewAdapter extends RecyclerView
 
     private List<Films> mFilms;
     private Context mContext;
+    private static final String BASE_IMAGE_URL = "https://image.tmdb.org/t/p/w342";
 
     public FilmRecyclerViewAdapter(List<Films> films, Context context) {
         this.mFilms = films;
@@ -29,6 +32,7 @@ public class FilmRecyclerViewAdapter extends RecyclerView
 
         TextView filmName;
         TextView filmRating;
+        ImageView filmImage;
 
 
         public FilmViewHolder(View itemView) {
@@ -36,6 +40,7 @@ public class FilmRecyclerViewAdapter extends RecyclerView
 
             filmName = itemView.findViewById(R.id.film_title);
             filmRating = itemView.findViewById(R.id.film_rating_star);
+            filmImage = itemView.findViewById(R.id.film_image);
 
         }
     }
@@ -57,6 +62,7 @@ public class FilmRecyclerViewAdapter extends RecyclerView
         //set the text and images of the film poster by viewholder position
         holder.filmName.setText(mFilms.get(position).getFilmTitle());
         holder.filmRating.setText(String.valueOf(mFilms.get(position).getVoteAverage()));
+        Picasso.get().load(BASE_IMAGE_URL + mFilms.get(position).getPosterPath()).into(holder.filmImage);
 
     }
 
