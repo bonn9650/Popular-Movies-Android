@@ -29,12 +29,13 @@ public class MainActivity extends AppCompatActivity {
     private static final String BASE_URL = "https://api.themoviedb.org";
 
     //initialize MOVIE_DB_API_KEY to your themoviebd.org API Key
-    private static final String MOVIE_DB_API_KEY = "subl";
+    private static final String MOVIE_DB_API_KEY = "***REMOVED*** ";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         final RecyclerView mRecyclerView;
         RecyclerView.LayoutManager mLayoutManager;
@@ -57,6 +58,14 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
         String listSort = sharedPreferences.getString(getString(R.string.sort_key), getString(R.string.MOST_POPULAR));
+
+        if (listSort.equals(getString(R.string.MOST_POPULAR))){
+            setTitle(getString(R.string.most_popular_films));
+        }else if (listSort.equals(getString(R.string.HIGHEST_RATED))){
+            setTitle(getString(R.string.top_rated_films));
+        }else {
+            setTitle(getString(R.string.app_name));
+        }
 
         Call<FilmsList> call = filmClient.getMovieList(listSort, MOVIE_DB_API_KEY);
 
@@ -93,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()){
-            case R.id.sort_menu:
+            case R.id.settings:
                 Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
                 startActivity(intent);
                 break;

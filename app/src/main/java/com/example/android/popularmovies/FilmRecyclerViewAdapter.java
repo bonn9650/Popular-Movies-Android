@@ -1,6 +1,7 @@
 package com.example.android.popularmovies;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -21,7 +22,7 @@ public class FilmRecyclerViewAdapter extends RecyclerView
 
     private List<Films> mFilms;
     private Context mContext;
-    private static final String BASE_IMAGE_URL = "https://image.tmdb.org/t/p/w342";
+    private final String BASE_IMAGE_URL = "https://image.tmdb.org/t/p/w342";
 
     public FilmRecyclerViewAdapter(List<Films> films, Context context) {
         this.mFilms = films;
@@ -57,12 +58,22 @@ public class FilmRecyclerViewAdapter extends RecyclerView
     }
 
     @Override
-    public void onBindViewHolder(@NonNull FilmViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final FilmViewHolder holder, final int position) {
 
         //set the text and images of the film poster by viewholder position
         holder.filmName.setText(mFilms.get(position).getFilmTitle());
         holder.filmRating.setText(String.valueOf(mFilms.get(position).getVoteAverage()));
         Picasso.get().load(BASE_IMAGE_URL + mFilms.get(position).getPosterPath()).into(holder.filmImage);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(mContext, FilmDetailActivity.class);
+                intent.putExtra("Film", mFilms.get(position));
+                mContext.startActivity(intent);
+            }
+        });
 
     }
 

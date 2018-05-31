@@ -7,7 +7,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:layout_margin="8dp">
+        android:layout_marginTop="16dp">
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
@@ -17,17 +17,14 @@
                 android:id="@+id/film_image"
                 android:layout_width="wrap_content"
                 android:layout_height="240dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginStart="8dp"
+                android:elevation="12dp"
                 android:contentDescription="Film Poster Image"
+                android:background="#000000"
                 android:scaleType="fitCenter"
                 android:adjustViewBounds="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:background="@color/colorPrimary"
                 tools:layout_height="220dp"
                 tools:layout_width="180dp" />
 
@@ -51,11 +48,12 @@
                 android:id="@+id/film_rating_star"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:background="@android:drawable/star_big_on"
+                android:background="@drawable/icons8_star"
                 android:gravity="center"
                 android:textColor="#000000"
-                android:textSize="12sp"
+                android:textSize="14sp"
                 android:textStyle="bold"
+                android:elevation="14dp"
                 app:layout_constraintEnd_toEndOf="@+id/film_image"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="5" />

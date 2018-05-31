@@ -2,7 +2,9 @@ package com.example.android.popularmovies.TheMovieDBAPI;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Films {
+import java.io.Serializable;
+
+public class Films implements Serializable {
 
     @SerializedName("vote_count") private String voteCount;
     @SerializedName("id") private String id;
