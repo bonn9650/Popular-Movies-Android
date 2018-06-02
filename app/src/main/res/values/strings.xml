@@ -19,5 +19,6 @@
     <!--Film Detail Strings-->
     <string name="synopsis">Synopsis</string>
     <string name="average_rating">Average Review Score</string>
+    <string name="image_description">Wider image for film Poster</string>
 
 </resources>

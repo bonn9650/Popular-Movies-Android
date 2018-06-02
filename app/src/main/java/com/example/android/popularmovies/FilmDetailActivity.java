@@ -18,7 +18,11 @@ public class FilmDetailActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_film_detail);
 
+        try {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }catch (NullPointerException e){
+            e.printStackTrace();
+        }
 
         ImageView detailFilmImage = findViewById(R.id.detail_film_image);
         TextView detailFilmTitle = findViewById(R.id.detail_film_title);

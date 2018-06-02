@@ -20,8 +20,8 @@ import java.util.List;
 public class FilmRecyclerViewAdapter extends RecyclerView
         .Adapter<FilmRecyclerViewAdapter.FilmViewHolder> {
 
-    private List<Films> mFilms;
-    private Context mContext;
+    private final List<Films> mFilms;
+    private final Context mContext;
     private final String BASE_IMAGE_URL = "https://image.tmdb.org/t/p/w342";
 
     public FilmRecyclerViewAdapter(List<Films> films, Context context) {
@@ -31,9 +31,9 @@ public class FilmRecyclerViewAdapter extends RecyclerView
 
     public static class FilmViewHolder extends RecyclerView.ViewHolder {
 
-        TextView filmName;
-        TextView filmRating;
-        ImageView filmImage;
+        final TextView filmName;
+        final TextView filmRating;
+        final ImageView filmImage;
 
 
         public FilmViewHolder(View itemView) {
