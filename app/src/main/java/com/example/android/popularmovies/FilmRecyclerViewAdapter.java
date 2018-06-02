@@ -61,10 +61,17 @@ public class FilmRecyclerViewAdapter extends RecyclerView
     public void onBindViewHolder(@NonNull final FilmViewHolder holder, final int position) {
 
         //set the text and images of the film poster by viewholder position
-        holder.filmName.setText(mFilms.get(position).getFilmTitle());
-        holder.filmRating.setText(String.valueOf(mFilms.get(position).getVoteAverage()));
-        Picasso.get().load(BASE_IMAGE_URL + mFilms.get(position).getPosterPath()).into(holder.filmImage);
+        holder.filmName.setText(mFilms.get(holder.getAdapterPosition()).getFilmTitle());
+        holder.filmRating.setText(String.valueOf(mFilms.get(holder.getAdapterPosition())
+                .getVoteAverage()));
+        Picasso.get().load(BASE_IMAGE_URL + mFilms.get(holder.getAdapterPosition())
+                .getPosterPath())
+                .placeholder(R.drawable.placeholder_image)
+                .into(holder.filmImage);
 
+
+        //set on click listener to view holder, pass serialized film object
+        // with intent to detail activity
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

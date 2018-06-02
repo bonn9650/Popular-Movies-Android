@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!--List sort arrays for ListPreference in settings-->
     <string-array name="SortType">
         <item>Most Popular</item>
         <item>Highest Rated</item>

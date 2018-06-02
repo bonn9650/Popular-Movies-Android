@@ -4,6 +4,9 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
+
+//implements serializble to create reference for serializable intent,
+//Films object is be passed in place of parcelable
 public class Films implements Serializable {
 
     @SerializedName("vote_count") private int voteCount;

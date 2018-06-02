@@ -28,9 +28,6 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String BASE_URL = "https://api.themoviedb.org";
 
-    //initialize MOVIE_DB_API_KEY to your themoviebd.org API Key
-    private static final String MOVIE_DB_API_KEY = "";
-
     //Global variables for monitoring sharedpreferences through lifecycle
     private SharedPreferences mSharedPreferences;
     private SharedPreferences.OnSharedPreferenceChangeListener prefListener;
@@ -40,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //set main view type, and layout manager
+        //set main view type, and layout manager, hasfixedsize increases performance on
         final RecyclerView mRecyclerView;
         RecyclerView.LayoutManager mLayoutManager;
         mRecyclerView = findViewById(R.id.recycler_view_main_activity);
@@ -88,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
         MovieDbClient filmClient = retrofit.create(MovieDbClient.class);
 
         //listsort uses string resource, resource dynamically changes path in @GET method call
-        Call<FilmsList> call = filmClient.getMovieList(listSort, MOVIE_DB_API_KEY);
+        Call<FilmsList> call = filmClient.getMovieList(listSort, getString(R.string.api_key));
 
         call.enqueue(new Callback<FilmsList>() {
             @Override

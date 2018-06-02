@@ -11,11 +11,14 @@ import com.squareup.picasso.Picasso;
 
 public class FilmDetailActivity extends AppCompatActivity{
 
+    private final String BASE_IMAGE_BACKDROP_URL = "https://image.tmdb.org/t/p/w500";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_film_detail);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         ImageView detailFilmImage = findViewById(R.id.detail_film_image);
         TextView detailFilmTitle = findViewById(R.id.detail_film_title);
@@ -25,7 +28,11 @@ public class FilmDetailActivity extends AppCompatActivity{
         Intent intent = getIntent();
         Films clickedFilm = (Films)intent.getSerializableExtra("Film");
 
-        Picasso.get().load("https://image.tmdb.org/t/p/w500" + clickedFilm.getBackdropPath()).into(detailFilmImage);
+        Picasso.get().load( BASE_IMAGE_BACKDROP_URL + clickedFilm.getBackdropPath())
+                .placeholder(R.drawable.placeholder_image)
+                .into(detailFilmImage);
+
+        //set activity title to film title
         setTitle(clickedFilm.getFilmTitle());
 
         detailFilmTitle.setText(clickedFilm.getFilmTitle());
