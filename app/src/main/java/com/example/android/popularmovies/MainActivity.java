@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //set main view type, and layout manager, hasfixedsize increases performance on
+        //set main view type, and layout manager
         final RecyclerView mRecyclerView;
         RecyclerView.LayoutManager mLayoutManager;
         mRecyclerView = findViewById(R.id.recycler_view_main_activity);
