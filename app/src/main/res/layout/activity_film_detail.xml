@@ -1,19 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
 
-    <ImageView
-        android:id="@+id/detail_film_image"
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="220dp"
-        android:scaleType="centerCrop"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@color/colorPrimaryLight"
-        tools:layout_editor_absoluteX="148dp" />
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/detail_film_image"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@color/colorPrimaryLight" />
+
+        <TextView
+            android:id="@+id/detail_film_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            android:textColor="#000000"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/detail_film_rating"
+            app:layout_constraintEnd_toStartOf="@+id/detail_film_rating"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/detail_film_rating"
+            tools:text="Movie Name" />
+
+        <TextView
+            android:id="@+id/detail_film_synopsis"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:text="@string/synopsis"
+            app:layout_constraintStart_toStartOf="@+id/detail_film_title"
+            app:layout_constraintTop_toBottomOf="@+id/detail_film_rating_star"
+            tools:text="Synopsis" />
+
+        <TextView
+            android:id="@+id/detail_film_rating_star"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/icons8_star"
+            android:gravity="center"
+            android:textSize="14sp"
+            android:textColor="#000000"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/detail_film_image"
+            tools:text="7.5" />
+
+        <TextView
+            android:id="@+id/detail_film_rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/average_rating"
+            tools:text="Avg. Reviewer Score"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="@+id/detail_film_rating_star"
+            app:layout_constraintEnd_toStartOf="@+id/detail_film_rating_star"
+            app:layout_constraintTop_toTopOf="@+id/detail_film_rating_star" />
+
+        <TextView
+            android:id="@+id/detail_film_synopsis_body"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textSize="16sp"
+            android:textStyle="italic"
+            app:layout_constraintEnd_toEndOf="@+id/detail_film_rating_star"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/detail_film_synopsis"
+            app:layout_constraintTop_toBottomOf="@+id/detail_film_synopsis"
+            tools:text="Synopsis body text goes here, content needs to be able to wrap the screen properly" />
 
 
-</android.support.constraint.ConstraintLayout>
+    </android.support.constraint.ConstraintLayout>
+
+</ScrollView>

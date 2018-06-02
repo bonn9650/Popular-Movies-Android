@@ -14,7 +14,6 @@ public class FilmsListSettingsFragment extends PreferenceFragmentCompat {
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         addPreferencesFromResource(R.xml.list_preferences);
-
     }
 
 }

@@ -6,27 +6,33 @@ import java.io.Serializable;
 
 public class Films implements Serializable {
 
-    @SerializedName("vote_count") private String voteCount;
-    @SerializedName("id") private String id;
+    @SerializedName("vote_count") private int voteCount;
+    @SerializedName("id") private int id;
     @SerializedName("vote_average") double voteAverage;
     @SerializedName("title") String filmTitle;
     @SerializedName("poster_path") String posterPath;
+    @SerializedName("backdrop_path") String backdropPath;
+    @SerializedName("genre_ids") int[] genreIDs;
+    @SerializedName("overview") String overview;
 
 
-    public Films(String voteCount, String id, double voteAverage, String filmTitle, String posterPath) {
+    public Films(int voteCount, int id, double voteAverage, String filmTitle, String posterPath, String backdropPath, int[] genreIDs, String overview) {
         this.voteCount = voteCount;
         this.id = id;
         this.voteAverage = voteAverage;
         this.filmTitle = filmTitle;
         this.posterPath = posterPath;
+        this.backdropPath = backdropPath;
+        this.genreIDs = genreIDs;
+        this.overview = overview;
     }
 
-
-    public String getVoteCount() {
+    //Getters
+    public int getVoteCount() {
         return voteCount;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
@@ -40,5 +46,17 @@ public class Films implements Serializable {
 
     public String getPosterPath() {
         return posterPath;
+    }
+
+    public String getBackdropPath() {
+        return backdropPath;
+    }
+
+    public int[] getGenreIDs() {
+        return genreIDs;
+    }
+
+    public String getOverview() {
+        return overview;
     }
 }

@@ -16,4 +16,8 @@
     <string name="most_popular_films">Most Popular Films</string>
     <string name="top_rated_films">Top Rated Films</string>
 
+    <!--Film Detail Strings-->
+    <string name="synopsis">Synopsis</string>
+    <string name="average_rating">Average Review Score</string>
+
 </resources>

@@ -29,36 +29,44 @@ public class MainActivity extends AppCompatActivity {
     private static final String BASE_URL = "https://api.themoviedb.org";
 
     //initialize MOVIE_DB_API_KEY to your themoviebd.org API Key
-    private static final String MOVIE_DB_API_KEY = "***REMOVED*** ";
+    private static final String MOVIE_DB_API_KEY = "";
+
+    //Global variables for monitoring sharedpreferences through lifecycle
+    private SharedPreferences mSharedPreferences;
+    private SharedPreferences.OnSharedPreferenceChangeListener prefListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
+        //set main view type, and layout manager
         final RecyclerView mRecyclerView;
         RecyclerView.LayoutManager mLayoutManager;
-
         mRecyclerView = findViewById(R.id.recycler_view_main_activity);
-
         mLayoutManager = new GridLayoutManager(this, 2);
-
         mRecyclerView.setLayoutManager(mLayoutManager);
 
 
-        Retrofit.Builder builder = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create());
 
-        Retrofit retrofit = builder.build();
-        MovieDbClient filmClient = retrofit.create(MovieDbClient.class);
+        //Create preference listener for settings, recreate main activity on list change
+        prefListener = new SharedPreferences.OnSharedPreferenceChangeListener() {
+            @Override
+            public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
 
+                if (key.equals(getString(R.string.sort_key))){
+                    recreate();
+                }
+            }
+        };
 
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        mSharedPreferences.registerOnSharedPreferenceChangeListener(prefListener);
 
-        String listSort = sharedPreferences.getString(getString(R.string.sort_key), getString(R.string.MOST_POPULAR));
+        String listSort = mSharedPreferences
+                .getString(getString(R.string.sort_key), getString(R.string.MOST_POPULAR));
 
+        //Set actionbar title to film sort from settings
         if (listSort.equals(getString(R.string.MOST_POPULAR))){
             setTitle(getString(R.string.most_popular_films));
         }else if (listSort.equals(getString(R.string.HIGHEST_RATED))){
@@ -67,6 +75,19 @@ public class MainActivity extends AppCompatActivity {
             setTitle(getString(R.string.app_name));
         }
 
+
+        //create retrofit instance to manage async network calls to theMovieDb server,
+        // Gson converter is for handling JSON objects
+        Retrofit.Builder builder = new Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create());
+
+        Retrofit retrofit = builder.build();
+
+        //MovieDbClient contains methods for network calls
+        MovieDbClient filmClient = retrofit.create(MovieDbClient.class);
+
+        //listsort uses string resource, resource dynamically changes path in @GET method call
         Call<FilmsList> call = filmClient.getMovieList(listSort, MOVIE_DB_API_KEY);
 
         call.enqueue(new Callback<FilmsList>() {
@@ -92,6 +113,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+    //inflate xml resource to create settings
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.films_list_menu, menu);
@@ -110,5 +133,12 @@ public class MainActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
         return true;
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //unregister pref change listener to avoid memory leak
+        mSharedPreferences.unregisterOnSharedPreferenceChangeListener(prefListener);
     }
 }
