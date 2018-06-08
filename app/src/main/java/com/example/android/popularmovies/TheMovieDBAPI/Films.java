@@ -17,9 +17,11 @@ public class Films implements Serializable {
     @SerializedName("backdrop_path") private String backdropPath;
     @SerializedName("genre_ids") private int[] genreIDs;
     @SerializedName("overview") private String overview;
+    @SerializedName("release_date") private String releaseDate;
 
 
-    public Films(int voteCount, int id, double voteAverage, String filmTitle, String posterPath, String backdropPath, int[] genreIDs, String overview) {
+    public Films(int voteCount, int id, double voteAverage, String filmTitle, String posterPath,
+                 String backdropPath, int[] genreIDs, String overview, String releaseDate) {
         this.voteCount = voteCount;
         this.id = id;
         this.voteAverage = voteAverage;
@@ -28,6 +30,7 @@ public class Films implements Serializable {
         this.backdropPath = backdropPath;
         this.genreIDs = genreIDs;
         this.overview = overview;
+        this.releaseDate = releaseDate;
     }
 
     //Getters
@@ -61,5 +64,9 @@ public class Films implements Serializable {
 
     public String getOverview() {
         return overview;
+    }
+
+    public String getReleaseDate() {
+        return releaseDate;
     }
 }

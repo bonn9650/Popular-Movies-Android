@@ -28,6 +28,7 @@ public class FilmDetailActivity extends AppCompatActivity{
         TextView detailFilmTitle = findViewById(R.id.detail_film_title);
         TextView detailFilmSynopsisBody = findViewById(R.id.detail_film_synopsis_body);
         TextView detailFilmStarRating = findViewById(R.id.detail_film_rating_star);
+        TextView detailFilmReleaseDate = findViewById(R.id.release_date_value);
 
         Intent intent = getIntent();
         Films clickedFilm = (Films)intent.getSerializableExtra("Film");
@@ -42,6 +43,12 @@ public class FilmDetailActivity extends AppCompatActivity{
         detailFilmTitle.setText(clickedFilm.getFilmTitle());
         detailFilmSynopsisBody.setText(clickedFilm.getOverview());
         detailFilmStarRating.setText(String.valueOf(clickedFilm.getVoteAverage()));
+        //TODO 1 clickedfilm.getReleaseDate
+        detailFilmReleaseDate.setText(String.valueOf(dateFormatter(clickedFilm.getReleaseDate())));
+    }
+
+    protected String dateFormatter(String date){
+        return date.replace("-", ".");
     }
 
 }
