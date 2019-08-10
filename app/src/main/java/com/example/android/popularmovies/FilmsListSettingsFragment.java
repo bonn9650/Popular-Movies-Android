@@ -8,7 +8,6 @@ public class FilmsListSettingsFragment extends PreferenceFragmentCompat {
 
     public FilmsListSettingsFragment() {
 
-
     }
 
     @Override

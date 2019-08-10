@@ -11,15 +11,19 @@
     <string name="settings_menu_title">Settings</string>
     <string name="title_activity_settings">Settings</string>
     <string name="title_activity_film_detail">FilmDetailActivity</string>
+    <string name="title_activity_favorite_films">FavoriteFilmsActivity</string>
 
     <!--Activity titles-->
     <string name="most_popular_films">Most Popular Films</string>
     <string name="top_rated_films">Top Rated Films</string>
 
     <!--Film Detail Strings-->
+    <string name="add_to_fav">Add to\nFavorites</string>
     <string name="synopsis">Synopsis</string>
-    <string name="average_rating">Average Review Score</string>
+    <string name="average_rating">Avg.\nReview Score</string>
     <string name="image_description">Wider image for film Poster</string>
     <string name="release_date">Released:</string>
+
+    <string name="no_favorite_films">No Favorite Films&#8230;</string>
 
 </resources>

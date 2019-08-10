@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.preference.PreferenceManager;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 import com.example.android.popularmovies.TheMovieDBAPI.Films;
 import com.example.android.popularmovies.TheMovieDBAPI.FilmsList;
 import com.example.android.popularmovies.TheMovieDBAPI.MovieDbClient;
+import com.google.gson.GsonBuilder;
 
 import java.util.List;
 
@@ -91,7 +93,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<FilmsList> call, Response<FilmsList> response) {
                 List<Films> filmsList = null;
-
                     try {
                         filmsList = response.body().getFilmsListResults();
 
@@ -126,6 +127,10 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
                 startActivity(intent);
                 break;
+
+            case R.id.favorite_films_menu:
+                Intent intent2 = new Intent(MainActivity.this, FavoriteFilmsActivity.class);
+                startActivity(intent2);
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -138,4 +143,5 @@ public class MainActivity extends AppCompatActivity {
         //unregister pref change listener to avoid memory leak
         mSharedPreferences.unregisterOnSharedPreferenceChangeListener(prefListener);
     }
+
 }
